@@ -7,57 +7,68 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="343*"/>
+            <ColumnDefinition Width="57*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Shopping Cart System" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="296,0,0,0" Width="208"/>
+        <TextBlock Text="Available Products Section" FontSize="17" FontWeight="Bold" Margin="95,27,126,383" />
+        <TextBlock Text="Shopping Cart Section" FontSize="17" FontWeight="Bold" Margin="76,25,38,382" Grid.Column="1" />
 
-        <TextBlock Text="Shopping Cart System" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
-
-        <DataGrid x:Name="myDataGrid" Margin="10,52,400,185" ItemsSource="{Binding Products}" AutoGenerateColumns="False">
+        <DataGrid x:Name="myDataGrid" Margin="10,52,288,185" ItemsSource="{Binding Products}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Product ID" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Product Name" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="myDataGrid2" Margin="405,52,5,185" ItemsSource="{Binding AddedCart}" AutoGenerateColumns="False">
+        <DataGrid x:Name="myDataGrid2" Margin="405,52,5,185" ItemsSource="{Binding AddedCart}" AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
-                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
-                    <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*"/>
+                <DataGridTextColumn Header="Product ID" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Product Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Width="800" Height="161">
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Margin="151,157,0,0" VerticalAlignment="Top" Height="146" Width="520" >
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top">
-                <Label Content="ID" HorizontalAlignment="Left"  FontSize="12"/>
-                <TextBox x:Name="IdTextBox" Height="20" Width="100"/>
+                <Label Content="Product ID" HorizontalAlignment="Left"  FontSize="12"/>
+                <TextBox x:Name="IdTextBox" Height="20" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top">
-                <Label Content="Name" HorizontalAlignment="Left" FontSize="12"/>
-                <TextBox x:Name="NameTextBox" Height="20" Width="100"/>
+                <Label Content="Product Name" HorizontalAlignment="Left" FontSize="12"/>
+                <TextBox x:Name="NameTextBox" Height="20" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top">
                 <Label Content="Description" HorizontalAlignment="Left"  FontSize="12"/>
-                <TextBox x:Name="TitleTextBox" Height="20" Width="100"/>
+                <TextBox x:Name="TitleTextBox" Height="20" Width="120"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top">
                 <Label Content="Price" HorizontalAlignment="Left" FontSize="12"/>
-                <TextBox x:Name="SalaryTextBox" Height="20" Width="100"/>
+                <TextBox x:Name="SalaryTextBox" Height="20" Width="120"/>
             </StackPanel>
-            <WrapPanel>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="178,210,64,0" >
+            <StackPanel>
                 <Button x:Name="AddButton" Content="Add" Click="AddBtn_Click" Height="20" Width="50" Margin="10,126,0,0"/>
-            </WrapPanel>
-            <WrapPanel>
+            </StackPanel>
+            <StackPanel>
                 <Button x:Name="RemoveButton" Content="Remove Items" Click="RemoveBtn_Click" Height="20" Width="50" Margin="10,126,0,0" />
-            </WrapPanel>
-            <WrapPanel>
+            </StackPanel>
+            <StackPanel>
                 <Button x:Name="UpdateButton" Content="Add Item" Click="UpdateBtn_Click" Height="20" Margin="10,126,0,0" />
-            </WrapPanel>
-            <WrapPanel>
+            </StackPanel>
+            <StackPanel>
                 <Button x:Name="AddtoCartBtn" Content="Add To Cart" Click="AddtoCartBtn_Click" Height="20"  Margin="10,126,0,0" />
-            </WrapPanel>
-            <WrapPanel>
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="RemovefromCartBtn" Content="Remove From Cart" Click="RemovefromCartBtn_Click" Height="20"  Margin="10,126,0,0" />
+            </StackPanel>
+            <StackPanel>
                 <Button x:Name="ClearButton" Content="Clear" Click="ClearBtn_Click" Height="20" Width="50" Margin="10,126,0,0" />
-            </WrapPanel>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

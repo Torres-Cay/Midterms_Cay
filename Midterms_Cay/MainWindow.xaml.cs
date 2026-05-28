@@ -90,6 +90,20 @@ namespace Midterms_Cay
                 MessageBox.Show("Please select an product to remove!");
             }
         }
+        private void RemovefromCartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CartItem selectedItem = myDataGrid2.SelectedItem as CartItem;
+            if (selectedItem != null)
+            {
+                AddedCart.Remove(selectedItem);
+                myDataGrid2.Items.Refresh();
+                MessageBox.Show("Item removed from cart successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to remove from the cart!");
+            }
+        }
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -117,26 +131,29 @@ namespace Midterms_Cay
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (myDataGrid.SelectedItem is Product selectedProduct)
-            {
-                Products.Remove(selectedProduct);
-                myDataGrid.Items.Refresh();
-            }
-            else
-            {
-                MessageBox.Show("Please select a product to remove!");
-            }
+            IdTextBox.Text = "";
+            NameTextBox.Text = "";
+            TitleTextBox.Text = "";
+            SalaryTextBox.Text = "";
         }
 
         private void AddtoCartBtn_Click(object sender, RoutedEventArgs e)
         {
-            Product selectedProduct = myDataGrid.SelectedItem as Product;
-            if (selectedProduct != null)
+            if (myDataGrid.SelectedItem is Product selectedProduct)
             {
-                AddedCart.Add(new CartItem);
-                   
-                myDataGrid.Items.Refresh();
+                CartItem newItem = new CartItem
+                {
+                    Id = selectedProduct.Id,
+                    Name = selectedProduct.Name,
+                    Description = selectedProduct.Description,
+                    Price = selectedProduct.Price
+                };
 
+                AddedCart.Add(newItem);
+                myDataGrid.Items.Refresh();
+                myDataGrid2.Items.Refresh();
+
+                MessageBox.Show("Item added to the Cart successfully!");
             }
             else
             {
